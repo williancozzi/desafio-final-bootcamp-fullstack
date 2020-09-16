@@ -25,8 +25,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
  */
 app.get("/api/", (_, response) => {
   response.send({
-    message:
-      "Bem-vindo à API de lançamentos. Acesse /transaction e siga as orientações",
+    message: "Bem-vindo à API de lançamentos. ",
   });
 });
 
