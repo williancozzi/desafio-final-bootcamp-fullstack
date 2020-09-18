@@ -4,10 +4,13 @@ export default function Select({ dates }) {
   return (
     <div style={styles.flexRow}>
       <div style={styles.widthNew}>
-        <a className="waves-effect waves-light btn" style={styles.buttonLeft}>
+        <button
+          className="waves-effect waves-light btn"
+          style={styles.buttonLeft}
+        >
           {" "}
           ←{" "}
-        </a>
+        </button>
 
         <select className="browser-default">
           <option defaultValue disabled>
@@ -17,10 +20,13 @@ export default function Select({ dates }) {
             return <option key={index}>{date}</option>;
           })}
         </select>
-        <a className="waves-effect waves-light btn" style={styles.buttonRight}>
+        <button
+          className="waves-effect waves-light btn"
+          style={styles.buttonRight}
+        >
           {" "}
           →{" "}
-        </a>
+        </button>
       </div>
     </div>
   );

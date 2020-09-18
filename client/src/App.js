@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Select from "./components/Select";
+import Records from "./components/Records";
 
 const api = axios.create({ baseURL: "api" });
 
@@ -19,9 +20,15 @@ export default function App() {
   }, []);
 
   return (
-    <div className="container">
-      <h1 className="center">Desafio Final do Bootcamp Full Stack</h1>
-      <Select dates={dates} />
+    <div>
+      <div className="container">
+        <h1 className="center">Desafio Final do Bootcamp Full Stack</h1>
+        <Select dates={dates} />
+      </div>
+
+      <div>
+        <Records />
+      </div>
     </div>
   );
 }
