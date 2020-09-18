@@ -2,21 +2,44 @@ import React from "react";
 
 export default function Select({ dates }) {
   return (
-    <div>
-      <select className="browser-default">
-        <option defaultValue disabled>
-          Escolha a data
-        </option>
-        {dates.map((date, index) => {
-          return <option key={index}>{date}</option>;
-        })}
-      </select>
+    <div style={styles.flexRow}>
+      <div style={styles.widthNew}>
+        <a className="waves-effect waves-light btn" style={styles.buttonLeft}>
+          {" "}
+          ←{" "}
+        </a>
+
+        <select className="browser-default">
+          <option defaultValue disabled>
+            Escolha a data
+          </option>
+          {dates.map((date, index) => {
+            return <option key={index}>{date}</option>;
+          })}
+        </select>
+        <a className="waves-effect waves-light btn" style={styles.buttonRight}>
+          {" "}
+          →{" "}
+        </a>
+      </div>
     </div>
   );
 }
 
-{
-  /* {transactions.map((transaction) => {
-        return <p key={transaction._id}>{transaction.yearMonth}</p>;
-      })} */
-}
+const styles = {
+  widthNew: {
+    display: "flex",
+  },
+  flexRow: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  buttonLeft: {
+    marginRight: "10px",
+    height: "44px",
+  },
+  buttonRight: {
+    marginLeft: "10px",
+    height: "44px",
+  },
+};
