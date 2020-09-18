@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function Select({ dates }) {
+export default function Select({ dates, onChangeSelect, initialValue }) {
+  const handleSelect = (event) => {
+    const periodValue = event.target.value;
+
+    onChangeSelect(periodValue);
+  };
+
   return (
     <div style={styles.flexRow}>
       <div style={styles.widthNew}>
@@ -12,10 +18,8 @@ export default function Select({ dates }) {
           ←{" "}
         </button>
 
-        <select className="browser-default">
-          <option defaultValue disabled>
-            Escolha a data
-          </option>
+        <select className="browser-default" onChange={handleSelect}>
+          <option>{initialValue}</option>
           {dates.map((date, index) => {
             return <option key={index}>{date}</option>;
           })}

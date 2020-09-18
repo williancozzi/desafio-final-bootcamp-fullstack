@@ -25,7 +25,26 @@ const getTransactionByPeriod = async (req, res) => {
     const query = { yearMonth: period };
     const transactions = await TransactionModel.find(query);
 
-    res.status(200).send({ length: transactions.length, transactions });
+    let expense = 0,
+      income = 0;
+
+    transactions.forEach((transaction) => {
+      if (transaction.type === "-") {
+        expense = expense + transaction.value;
+      } else {
+        income = income + transaction.value;
+      }
+    });
+
+    let balance = income - expense;
+    let allData = {
+      entries: transactions.length,
+      expense,
+      income,
+      balance,
+      transactions,
+    };
+    res.status(200).send(allData);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }

@@ -1,13 +1,15 @@
 import React from "react";
 
-export default function Records() {
+export default function Records({ header }) {
+  const { entries, expense, income, balance } = header;
+
   return (
     <div style={styles.center}>
       <div style={styles.flex}>
-        <span>Lançamentos: </span>
-        <span>Receita: </span>
-        <span>Despesa: </span>
-        <span>Saldo: </span>
+        <span>Lançamentos: {entries} </span>
+        <span>Receita: {income}</span>
+        <span>Despesa: {expense}</span>
+        <span>Saldo: {balance}</span>
       </div>
     </div>
   );
@@ -19,7 +21,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
     padding: "5px",
-    margin: "10px",
+    margin: "20px",
     border: "1px solid lightgrey",
     borderRadius: "4px",
     width: "70%",
