@@ -8,6 +8,7 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
 
   useEffect(() => {
     formSelect.current.value = initialValue;
+    setPeriodValue(initialValue);
 
     console.log('Posição da Initial Date: ', dates.indexOf(initialValue));
 
@@ -21,8 +22,8 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
 
   const clickButton = direction => {
     console.log("Dates: ", dates);
-    console.log("Posição no Vetor: ", dates.indexOf(initialValue));
-    console.log('Próximo Objeto: ', dates.indexOf(initialValue) + 1);
+    console.log("Posição no Vetor: ", dates.indexOf(periodValue));
+    console.log('Próximo Objeto: ', dates[dates.indexOf(periodValue) + 1]);
 
     if (direction === "r") {
       console.log("Direita");
