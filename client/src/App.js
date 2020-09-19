@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Select from "./components/Select";
+import CustomSelect from "./components/CustomSelect";
 import Records from "./components/Records";
 
 const api = axios.create({ baseURL: "api" });
@@ -30,7 +30,7 @@ export default function App() {
 
     fetchPeriodSelected();
     fetchDatesForSelect();
-  }, [period, actualDate]);
+  }, [period]);
 
   const handleDateSelect = (period) => {
     setPeriod(period);
@@ -40,7 +40,7 @@ export default function App() {
     <div>
       <div className="container">
         <h1 className="center">Desafio Final do Bootcamp Full Stack</h1>
-        <Select
+        <CustomSelect
           initialValue={actualDate}
           dates={dates}
           onChangeSelect={handleDateSelect}
