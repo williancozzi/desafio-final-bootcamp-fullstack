@@ -41,6 +41,7 @@ export default function App() {
     <div>
       <div className="container">
         <h1 className="center">Desafio Final do Bootcamp Full Stack</h1>
+
         <CustomSelect
           initialValue={actualDate}
           dates={dates}
