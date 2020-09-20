@@ -7,7 +7,9 @@ import Month from "./components/Month";
 const api = axios.create({ baseURL: "api" });
 
 export default function App() {
-  const [periodSelected, setPeriodSelected] = React.useState({});
+  const [periodSelected, setPeriodSelected] = React.useState({
+    transactions: [],
+  });
   const [dates, setDates] = React.useState([]);
   const [period, setPeriod] = React.useState(null);
   const [actualDate, setActualDate] = React.useState("");

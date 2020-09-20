@@ -9,7 +9,7 @@ export default function Month({ monthTransactions }) {
       Month
       <div>
         {console.log("month", transactions)}
-        {transactions?.map((transaction) => {
+        {transactions.map((transaction) => {
           return (
             <div key={transaction._id}>
               <Day
@@ -17,6 +17,7 @@ export default function Month({ monthTransactions }) {
                 description={transaction.description}
                 category={transaction.category}
                 value={transaction.value}
+                type={transaction.type}
               />
             </div>
           );
