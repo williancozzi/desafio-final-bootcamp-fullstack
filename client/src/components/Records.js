@@ -23,7 +23,7 @@ const styles = {
     padding: "5px",
     margin: "20px",
     border: "1px solid lightgrey",
-    borderRadius: "4px",
+    borderRadius: "6px",
     width: "70%",
   },
   center: {

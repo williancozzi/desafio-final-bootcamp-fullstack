@@ -1,36 +1,61 @@
 import React, { useEffect, useState } from "react";
 
-
 export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
   let formSelect = React.createRef();
 
   const [periodValue, setPeriodValue] = useState(initialValue);
+  const [leftButtonDisabled, setLeftButtonDisabled] = useState(false);
+  const [rightButtonDisabled, setRightButtonDisabled] = useState(false);
 
   useEffect(() => {
     formSelect.current.value = initialValue;
     setPeriodValue(initialValue);
-
-    console.log('Posição da Initial Date: ', dates.indexOf(initialValue));
-
+    console.log("Posição da Initial Date: ", dates.indexOf(initialValue));
+    // eslint-disable-next-line
   }, [initialValue]);
 
   const handleSelect = (event) => {
     const periodValue = event.target.value;
     setPeriodValue(periodValue);
     onChangeSelect(periodValue);
+    rightButtonCheck();
+    leftButtonCheck();
   };
 
-  const clickButton = direction => {
+  const rightButtonCheck = () => {
+    if (dates.indexOf(periodValue) === 35) {
+      setRightButtonDisabled(true);
+    } else {
+      setRightButtonDisabled(false);
+    }
+  };
+  const leftButtonCheck = () => {
+    if (dates.indexOf(periodValue) === 0) {
+      setLeftButtonDisabled(true);
+    } else {
+      setLeftButtonDisabled(false);
+    }
+  };
+
+  const clickButton = (direction) => {
     console.log("Dates: ", dates);
-    console.log("Posição no Vetor: ", dates.indexOf(periodValue));
-    console.log('Próximo Objeto: ', dates[dates.indexOf(periodValue) + 1]);
+
+    rightButtonCheck();
+    leftButtonCheck();
 
     if (direction === "r") {
       console.log("Direita");
-      setPeriodValue(periodValue);
 
+      console.log("Posição no Vetor: ", dates.indexOf(periodValue));
+      console.log("Próximo Objeto: ", dates[dates.indexOf(periodValue) + 1]);
+
+      rightButtonCheck();
     } else {
       console.log("Esquerda");
+      console.log("Posição no Vetor: ", dates.indexOf(periodValue));
+      console.log("Próximo Objeto: ", dates[dates.indexOf(periodValue) - 1]);
+
+      leftButtonCheck();
     }
   };
 
@@ -38,9 +63,10 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
     <div style={styles.flexRow}>
       <div style={styles.widthNew}>
         <button
+          disabled={leftButtonDisabled}
           className="waves-effect waves-light btn"
           style={styles.buttonLeft}
-          onClick={value => clickButton('l')}
+          onClick={(value) => clickButton("l")}
         >
           {" "}
           ←{" "}
@@ -57,9 +83,10 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
         </select>
 
         <button
+          disabled={rightButtonDisabled}
           className="waves-effect waves-light btn"
           style={styles.buttonRight}
-          onClick={value => clickButton('r')}
+          onClick={(value) => clickButton("r")}
         >
           {" "}
           →{" "}
