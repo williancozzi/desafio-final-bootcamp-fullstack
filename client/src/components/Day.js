@@ -3,29 +3,22 @@ import React from "react";
 export default function Day({ value, category, description, day, type }) {
   return (
     <div>
-      {type === "+" ? (
-        <div style={styles.flexDayPositive}>
+      <div
+        style={type === "+" ? styles.flexDayPositive : styles.flexDayNegative}
+      >
+        <div style={{ display: "flex", flex: 1 }}>
           <label style={styles.flexLabel}>{day}</label>
-          <div>
+          <div style={{ flex: 1 }}>
             <label style={styles.flexLabel}>{category}</label>
             <label style={styles.flexLabel}>{description}</label>
           </div>
-
-          <label style={styles.valueLabel}>Tipo {type}</label>
-          <label style={styles.valueLabel}>R${value}</label>
         </div>
-      ) : (
-        <div style={styles.flexDayNegative}>
-          <label style={styles.flexLabel}>{day}</label>
-          <div>
-            <label style={styles.flexLabel}>{category}</label>
-            <label style={styles.flexLabel}>{description}</label>
-          </div>
 
-          <label style={styles.valueLabel}>Tipo {type}</label>
-          <label style={styles.valueLabel}>R${value}</label>
-        </div>
-      )}
+        <label style={styles.typeLabel}>
+          {type === "+" ? "Receita" : "Despesa"}
+        </label>
+        <label style={styles.valueLabel}>R${value}</label>
+      </div>
     </div>
   );
 }
@@ -38,6 +31,7 @@ const styles = {
     borderRadius: "6px",
     display: "flex",
     backgroundColor: "#c2f0c2",
+    justifyContent: "space-between",
   },
   flexDayNegative: {
     padding: "5px",
@@ -46,6 +40,7 @@ const styles = {
     borderRadius: "6px",
     display: "flex",
     backgroundColor: "#ff8080",
+    justifyContent: "space-between",
   },
   flexLabel: {
     margin: "10px",
@@ -54,9 +49,12 @@ const styles = {
     color: "black",
   },
   valueLabel: {
-    marginLeft: "auto",
     alignSelf: "center",
-    marginRight: "10vw",
+    color: "black",
+  },
+  typeLabel: {
+    flex: 1,
+    alignSelf: "center",
     color: "black",
   },
 };
