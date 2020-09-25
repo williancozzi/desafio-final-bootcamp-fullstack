@@ -6,7 +6,6 @@ export default function Month({ monthTransactions }) {
 
   return (
     <div style={styles.monthCss}>
-      Month
       <div>
         {console.log("month", transactions)}
         {transactions.map((transaction) => {

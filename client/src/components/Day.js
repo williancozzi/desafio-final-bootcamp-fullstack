@@ -7,17 +7,22 @@ export default function Day({ value, category, description, day, type }) {
         style={type === "+" ? styles.flexDayPositive : styles.flexDayNegative}
       >
         <div style={{ display: "flex", flex: 1 }}>
-          <label style={styles.flexLabel}>{day}</label>
+          <label style={styles.flexLabelBold}>{day}</label>
           <div style={{ flex: 1 }}>
-            <label style={styles.flexLabel}>{category}</label>
+            <label style={styles.flexLabelBold}>{category}</label>
             <label style={styles.flexLabel}>{description}</label>
           </div>
         </div>
 
-        <label style={styles.typeLabel}>
-          {type === "+" ? "Receita" : "Despesa"}
-        </label>
-        <label style={styles.valueLabel}>R${value}</label>
+        <label style={styles.valueLabel}>R$ {value}</label>
+
+        <span style={styles.iconLabel} className="edit">
+          <i className="material-icons">edit</i>
+        </span>
+
+        <span style={styles.iconLabel} className="delete" cursor="pointer">
+          <i className="material-icons">delete</i>
+        </span>
       </div>
     </div>
   );
@@ -42,6 +47,13 @@ const styles = {
     backgroundColor: "#ff8080",
     justifyContent: "space-between",
   },
+  flexLabelBold: {
+    margin: "10px",
+    display: "flex",
+    alignItems: "center",
+    color: "black",
+    fontWeight: "bold",
+  },
   flexLabel: {
     margin: "10px",
     display: "flex",
@@ -50,11 +62,15 @@ const styles = {
   },
   valueLabel: {
     alignSelf: "center",
+    marginRight: "30vh",
     color: "black",
+    fontWeight: "bold",
+    fontSize: "large",
   },
-  typeLabel: {
-    flex: 1,
+  iconLabel: {
     alignSelf: "center",
     color: "black",
+    marginRight: "20px",
+    cursor: "pointer",
   },
 };

@@ -3,6 +3,7 @@ import axios from "axios";
 import CustomSelect from "./components/CustomSelect";
 import Records from "./components/Records";
 import Month from "./components/Month";
+import Filter from "./components/Filter";
 
 const api = axios.create({ baseURL: "api" });
 
@@ -53,6 +54,10 @@ export default function App() {
 
       <div>
         <Records header={periodSelected} />
+      </div>
+
+      <div>
+        <Filter />
       </div>
 
       <div>
