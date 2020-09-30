@@ -24,9 +24,10 @@ const styles = {
   flexDiv: {
     display: "flex",
     padding: "20px",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
+    marginRight: "20px",
   },
   inputDiv: {
-    width: "80%",
+    width: "60%",
   },
 };

@@ -42,26 +42,28 @@ export default function App() {
 
   return (
     <div>
-      <div className="container">
-        <h1 className="center">Desafio Final do Bootcamp Full Stack</h1>
-
-        <CustomSelect
-          initialValue={actualDate}
-          dates={dates}
-          onChangeSelect={handleDateSelect}
-        />
-      </div>
-
       <div>
-        <Records header={periodSelected} />
-      </div>
+        <div className="container">
+          <h1 className="center">Controle Financeiro Pessoal</h1>
 
-      <div>
-        <Filter />
-      </div>
+          <CustomSelect
+            initialValue={actualDate}
+            dates={dates}
+            onChangeSelect={handleDateSelect}
+          />
+        </div>
 
-      <div>
-        <Month monthTransactions={periodSelected} />
+        <div>
+          <Records header={periodSelected} />
+        </div>
+
+        <div>
+          <Filter />
+        </div>
+
+        <div>
+          <Month monthTransactions={periodSelected} />
+        </div>
       </div>
     </div>
   );

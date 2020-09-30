@@ -1,6 +1,15 @@
 import React from "react";
+import axios from "axios";
 
-export default function Day({ value, category, description, day, type }) {
+export default function Day({ _id, value, category, description, day, type }) {
+  const api = axios.create({ baseURL: "api" });
+
+  const handleDeleteButton = async (event) => {
+    const id = event.target.id;
+    console.log(id);
+    await api.delete(`/transaction/delete/${id}`);
+  };
+
   return (
     <div>
       <div
@@ -21,7 +30,9 @@ export default function Day({ value, category, description, day, type }) {
         </span>
 
         <span style={styles.iconLabel} className="delete" cursor="pointer">
-          <i className="material-icons">delete</i>
+          <i className="material-icons" onClick={handleDeleteButton} id={_id}>
+            delete
+          </i>
         </span>
       </div>
     </div>
@@ -32,19 +43,19 @@ const styles = {
   flexDayPositive: {
     padding: "5px",
     margin: "20px",
-    border: "1px solid lightgrey",
+    border: "1px solid DarkGray ",
     borderRadius: "6px",
     display: "flex",
-    backgroundColor: "#c2f0c2",
+    backgroundColor: "#55efc4",
     justifyContent: "space-between",
   },
   flexDayNegative: {
     padding: "5px",
     margin: "20px",
-    border: "1px solid lightgrey",
+    border: "1px solid gray ",
     borderRadius: "6px",
     display: "flex",
-    backgroundColor: "#ff8080",
+    backgroundColor: "#fab1a0",
     justifyContent: "space-between",
   },
   flexLabelBold: {

@@ -17,6 +17,7 @@ export default function Month({ monthTransactions }) {
                 category={transaction.category}
                 value={transaction.value}
                 type={transaction.type}
+                _id={transaction._id}
               />
             </div>
           );
@@ -28,7 +29,6 @@ export default function Month({ monthTransactions }) {
 
 const styles = {
   monthCss: {
-    backgroundColor: "#f7f3ce",
     padding: "10px",
   },
 };
