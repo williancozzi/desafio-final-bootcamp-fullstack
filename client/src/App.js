@@ -11,9 +11,13 @@ export default function App() {
   const [periodSelected, setPeriodSelected] = React.useState({
     transactions: [],
   });
+
   const [dates, setDates] = React.useState([]);
   const [period, setPeriod] = React.useState(null);
   const [actualDate, setActualDate] = React.useState("");
+  const [filteredTransactions, setFilteredTransactions] = React.useState({
+    transactions: [],
+  });
 
   React.useEffect(() => {
     const fetchDatesForSelect = async () => {
@@ -30,6 +34,7 @@ export default function App() {
 
       setActualDate(actualDate);
       setPeriodSelected(data);
+      setFilteredTransactions(data);
     };
 
     fetchPeriodSelected();
@@ -38,6 +43,19 @@ export default function App() {
 
   const handleDateSelect = (period) => {
     setPeriod(period);
+  };
+
+  const handleFilterChange = (e) => {
+    console.log("digitado", e.target.value);
+
+    const filteredDescriptions = periodSelected.transactions.filter((item) => {
+      return item.description
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase());
+    });
+
+    //setFilteredTransactions(filteredDescriptions);
+    console.log(filteredDescriptions);
   };
 
   return (
@@ -58,11 +76,11 @@ export default function App() {
         </div>
 
         <div>
-          <Filter />
+          <Filter onFilterChange={handleFilterChange} />
         </div>
 
         <div>
-          <Month monthTransactions={periodSelected} />
+          <Month monthTransactions={filteredTransactions} />
         </div>
       </div>
     </div>

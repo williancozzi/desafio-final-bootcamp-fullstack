@@ -7,7 +7,6 @@ export default function Month({ monthTransactions }) {
   return (
     <div style={styles.monthCss}>
       <div>
-        {console.log("month", transactions)}
         {transactions.map((transaction) => {
           return (
             <div key={transaction._id}>

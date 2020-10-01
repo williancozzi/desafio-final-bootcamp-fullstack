@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Load() {
+export default function LoadSpinner() {
   return (
     <div>
       <div className="preloader-wrapper big active">
