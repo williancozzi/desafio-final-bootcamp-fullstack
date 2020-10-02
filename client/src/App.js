@@ -47,15 +47,19 @@ export default function App() {
 
   const handleFilterChange = (e) => {
     console.log("digitado", e.target.value);
+    //debugger;
+    if (periodSelected.transactions) {
+      const newTransactions = periodSelected.transactions.filter((item) => {
+        return item.description
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
+      });
 
-    const filteredDescriptions = periodSelected.transactions.filter((item) => {
-      return item.description
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase());
-    });
-
-    //setFilteredTransactions(filteredDescriptions);
-    console.log(filteredDescriptions);
+      periodSelected.transactions = newTransactions;
+      setFilteredTransactions(periodSelected);
+      console.log("filtered", newTransactions);
+      console.log("periodSelected", periodSelected);
+    }
   };
 
   return (
@@ -72,7 +76,11 @@ export default function App() {
         </div>
 
         <div>
-          <Records header={periodSelected} />
+          <Records
+            header={
+              filteredTransactions ? filteredTransactions : periodSelected
+            }
+          />
         </div>
 
         <div>
@@ -80,7 +88,11 @@ export default function App() {
         </div>
 
         <div>
-          <Month monthTransactions={filteredTransactions} />
+          <Month
+            monthTransactions={
+              filteredTransactions ? filteredTransactions : periodSelected
+            }
+          />
         </div>
       </div>
     </div>
