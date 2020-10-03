@@ -46,7 +46,6 @@ export default function App() {
   };
 
   const handleFilterChange = (e) => {
-    console.log("digitado", e.target.value);
     //debugger;
     if (periodSelected.transactions) {
       const newTransactions = periodSelected.transactions.filter((item) => {
@@ -55,10 +54,9 @@ export default function App() {
           .includes(e.target.value.toLowerCase());
       });
 
-      periodSelected.transactions = newTransactions;
-      setFilteredTransactions(periodSelected);
-      console.log("filtered", newTransactions);
-      console.log("periodSelected", periodSelected);
+      //periodSelected.transactions = newTransactions;
+      setFilteredTransactions({...periodSelected, transactions: newTransactions});
+
     }
   };
 

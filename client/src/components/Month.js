@@ -4,11 +4,6 @@ import Day from "./Day";
 export default function Month({ monthTransactions }) {
   const transactions = monthTransactions.transactions;
   
-  React.useEffect(() => {
-    console.log("ouvindo transactions", transactions);
- 
-  }, [transactions])
-
   return transactions ? (
     <div style={styles.monthCss}>
       <div>

@@ -38,7 +38,6 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
   };
 
   const clickButton = (direction) => {
-    console.log("Dates: ", dates);
 
     rightButtonCheck();
     leftButtonCheck();
