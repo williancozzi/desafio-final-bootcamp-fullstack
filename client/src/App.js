@@ -14,7 +14,7 @@ export default function App() {
 
   const [dates, setDates] = React.useState([]);
   const [period, setPeriod] = React.useState(null);
-  const [actualDate, setActualDate] = React.useState("");
+  const [actualDate, setActualDate] = React.useState(new Date().toISOString().slice(0, 7));
   const [filteredTransactions, setFilteredTransactions] = React.useState({
     transactions: [],
   });
@@ -32,6 +32,8 @@ export default function App() {
         `/transaction/byperiod/${period ? period : actualDate}`
       );
 
+      
+
       setActualDate(actualDate);
       setPeriodSelected(data);
       setFilteredTransactions(data);
@@ -39,7 +41,7 @@ export default function App() {
 
     fetchPeriodSelected();
     fetchDatesForSelect();
-  }, [period]);
+  }, [period, actualDate]);
 
   const handleDateSelect = (period) => {
     setPeriod(period);

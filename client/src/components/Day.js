@@ -1,14 +1,19 @@
 import React from "react";
-import axios from "axios";
+//import axios from "axios";
 
 export default function Day({ _id, value, category, description, day, type }) {
-  const api = axios.create({ baseURL: "api" });
+  //const api = axios.create({ baseURL: "api" });
 
   const handleDeleteButton = async (event) => {
     const id = event.target.id;
-    console.log(id);
-    await api.delete(`/transaction/delete/${id}`);
+    console.log("deleting ", id);
+    //await api.delete(`/transaction/delete/${id}`);
   };
+
+const handleEditButton = async (e) => {
+  const id = e.target.id;
+  console.log("editing ",id);
+}
 
   return (
     <div>
@@ -26,7 +31,7 @@ export default function Day({ _id, value, category, description, day, type }) {
         <label style={styles.valueLabel}>R$ {value}</label>
 
         <span style={styles.iconLabel} className="edit">
-          <i className="material-icons">edit</i>
+          <i className="material-icons" onClick={handleEditButton} id={_id}>edit</i>
         </span>
 
         <span style={styles.iconLabel} className="delete" cursor="pointer">

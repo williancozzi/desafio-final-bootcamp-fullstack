@@ -8,9 +8,9 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
   const [rightButtonDisabled, setRightButtonDisabled] = useState(false);
 
   useEffect(() => {
-    formSelect.current.value = initialValue;
+    formSelect.current.value = new Date().toISOString().slice(0, 7);
     setPeriodValue(initialValue);
-    console.log("Posição da Initial Date: ", dates.indexOf(initialValue));
+    //console.log("Posição da Initial Date: ", dates.indexOf(initialValue));
     // eslint-disable-next-line
   }, [initialValue]);
 
