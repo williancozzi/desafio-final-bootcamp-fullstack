@@ -6,6 +6,7 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
   const [periodValue, setPeriodValue] = useState(initialValue);
   const [leftButtonDisabled, setLeftButtonDisabled] = useState(false);
   const [rightButtonDisabled, setRightButtonDisabled] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(new Date().toISOString().slice(0, 7))
 
   useEffect(() => {
     formSelect.current.value = new Date().toISOString().slice(0, 7);
@@ -14,10 +15,12 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
     // eslint-disable-next-line
   }, [initialValue]);
 
+
   const handleSelect = (event) => {
     const periodValue = event.target.value;
     setPeriodValue(periodValue);
     onChangeSelect(periodValue);
+    setSelectedValue(periodValue);
     rightButtonCheck();
     leftButtonCheck();
   };
@@ -47,13 +50,14 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
 
       console.log("Posição no Vetor: ", dates.indexOf(periodValue));
       console.log("Próximo Objeto: ", dates[dates.indexOf(periodValue) + 1]);
+      setSelectedValue(dates[dates.indexOf(selectedValue)+1]);
 
       rightButtonCheck();
     } else {
       console.log("Esquerda");
       console.log("Posição no Vetor: ", dates.indexOf(periodValue));
       console.log("Próximo Objeto: ", dates[dates.indexOf(periodValue) - 1]);
-
+      setSelectedValue(dates[dates.indexOf(selectedValue)+1]);
       leftButtonCheck();
     }
   };
@@ -75,6 +79,7 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
           className="browser-default"
           onChange={handleSelect}
           ref={formSelect}
+          value={selectedValue}
         >
           {dates.map((date, index) => {
             return <option key={index}>{date}</option>;

@@ -32,8 +32,6 @@ export default function App() {
         `/transaction/byperiod/${period ? period : actualDate}`
       );
 
-      
-
       setActualDate(actualDate);
       setPeriodSelected(data);
       setFilteredTransactions(data);
@@ -41,7 +39,7 @@ export default function App() {
 
     fetchPeriodSelected();
     fetchDatesForSelect();
-  }, [period, actualDate]);
+  }, [period]);
 
   const handleDateSelect = (period) => {
     setPeriod(period);
@@ -61,6 +59,7 @@ export default function App() {
 
     }
   };
+
 
   return (
     <div>

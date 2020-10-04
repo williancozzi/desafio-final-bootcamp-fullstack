@@ -15,13 +15,13 @@ export default function Filter({ onFilterChange }) {
         + Novo lançamento{" "}
       </button>
       <div style={styles.inputDiv}>
-        <input
+        <input style={{paddingLeft: "10px"}}
           id="filter"
           placeholder="Filtro"
           type="text"
           onKeyUp={handleFilter}
         />
-        <label htmlFor="filter">
+        <label htmlFor="filter" style={{paddingLeft: "10px"}}>
           Busque pela descrição (Ex: almoço, compra, táxi){" "}
         </label>
       </div>
@@ -37,6 +37,6 @@ const styles = {
     marginRight: "20px",
   },
   inputDiv: {
-    width: "60%",
+    width: "50%",
   },
 };
