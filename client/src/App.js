@@ -5,16 +5,21 @@ import Records from "./components/Records";
 import Month from "./components/Month";
 import Filter from "./components/Filter";
 
+
 const api = axios.create({ baseURL: "api" });
 
 export default function App() {
+
+
   const [periodSelected, setPeriodSelected] = React.useState({
     transactions: [],
   });
 
   const [dates, setDates] = React.useState([]);
   const [period, setPeriod] = React.useState(null);
-  const [actualDate, setActualDate] = React.useState(new Date().toISOString().slice(0, 7));
+  const [actualDate, setActualDate] = React.useState(
+    new Date().toISOString().slice(0, 7)
+  );
   const [filteredTransactions, setFilteredTransactions] = React.useState({
     transactions: [],
   });
@@ -46,7 +51,6 @@ export default function App() {
   };
 
   const handleFilterChange = (e) => {
-    //debugger;
     if (periodSelected.transactions) {
       const newTransactions = periodSelected.transactions.filter((item) => {
         return item.description
@@ -55,11 +59,12 @@ export default function App() {
       });
 
       //periodSelected.transactions = newTransactions;
-      setFilteredTransactions({...periodSelected, transactions: newTransactions});
-
+      setFilteredTransactions({
+        ...periodSelected,
+        transactions: newTransactions,
+      });
     }
   };
-
 
   return (
     <div>

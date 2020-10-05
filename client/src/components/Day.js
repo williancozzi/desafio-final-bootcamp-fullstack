@@ -1,14 +1,11 @@
 import React from "react";
 //import axios from "axios";
+import DeleteModal from "./modal/DeleteModal";
+import useModal from "./modal/useModal";
 
 export default function Day({ _id, value, category, description, day, type }) {
+  const { isShowing, toggle } = useModal();
   //const api = axios.create({ baseURL: "api" });
-
-  const handleDeleteButton = async (event) => {
-    const id = event.target.id;
-    console.log("deleting ", id);
-    //await api.delete(`/transaction/delete/${id}`);
-  };
 
 const handleEditButton = async (e) => {
   const id = e.target.id;
@@ -35,10 +32,14 @@ const handleEditButton = async (e) => {
         </span>
 
         <span style={styles.iconLabel} className="delete" cursor="pointer">
-          <i className="material-icons" onClick={handleDeleteButton} id={_id}>
+          <i className="material-icons" onClick={toggle} id={_id}>
             delete
           </i>
         </span>
+
+        <div>
+          <DeleteModal isShowing={isShowing} type="delete" hide={toggle} id={_id} />
+        </div>
       </div>
     </div>
   );
