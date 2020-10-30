@@ -5,12 +5,9 @@ import Records from "./components/Records";
 import Month from "./components/Month";
 import Filter from "./components/Filter";
 
-
 const api = axios.create({ baseURL: "api" });
 
 export default function App() {
-
-
   const [periodSelected, setPeriodSelected] = React.useState({
     transactions: [],
   });

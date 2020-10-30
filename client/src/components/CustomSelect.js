@@ -18,7 +18,7 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
 
   const handleSelect = (event) => {
     const periodValue = event.target.value ? event.target.value : event;
-    
+
     setPeriodValue(periodValue);
     onChangeSelect(periodValue);
     setSelectedValue(periodValue);
@@ -51,15 +51,15 @@ export default function CustomSelect({ dates, onChangeSelect, initialValue }) {
 
       console.log("Posição no Vetor: ", dates.indexOf(periodValue));
       console.log("Próximo Objeto: ", dates[dates.indexOf(periodValue) + 1]);
-      setSelectedValue(dates[dates.indexOf(selectedValue)+1]);
-      
+      setSelectedValue(dates[dates.indexOf(selectedValue) + 1]);
+
       rightButtonCheck();
       //handleSelect(periodValue);
     } else {
       console.log("Esquerda");
       console.log("Posição no Vetor: ", dates.indexOf(periodValue));
       console.log("Próximo Objeto: ", dates[dates.indexOf(periodValue) - 1]);
-      setSelectedValue(dates[dates.indexOf(selectedValue)-1]);
+      setSelectedValue(dates[dates.indexOf(selectedValue) - 1]);
       leftButtonCheck();
       //handleSelect(periodValue);
     }
