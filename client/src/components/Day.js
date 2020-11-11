@@ -7,10 +7,10 @@ export default function Day({ _id, value, category, description, day, type }) {
   const { isShowing, toggle } = useModal();
   //const api = axios.create({ baseURL: "api" });
 
-const handleEditButton = async (e) => {
-  const id = e.target.id;
-  console.log("editing ",id);
-}
+  const handleEditButton = async (e) => {
+    const id = e.target.id;
+    console.log("editing o id: ", id);
+  }
 
   return (
     <div>
